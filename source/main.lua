@@ -6,7 +6,7 @@ import "CoreLibs/timer"
 import "scenes/manager"
 
 local function initialize()
-	SceneManager.load(SceneManager.SCENE_INTRO)
+    SceneManager.load(SceneManager.SCENE_INTRO)
 end
 
 initialize()

@@ -22,7 +22,7 @@ function SceneManager.load(newScene)
     elseif newScene == SceneManager.SCENE_BALLOON then
         currentScene = SceneBalloon()
     end
-    
+
     if currentScene then
         currentScene:load()
     end
@@ -40,5 +40,5 @@ function SceneManager.endScene()
 end
 
 function playdate.update()
-	currentScene:update()
+    currentScene:update()
 end

@@ -2,7 +2,7 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 
 class("Scene", {
-	sceneType = 0
+    sceneType = 0
 }).extends()
 
 function Scene:init()
@@ -12,7 +12,7 @@ function Scene:load()
 end
 
 function Scene:unload()
-	playdate.graphics.clear()
+    playdate.graphics.clear()
 end
 
 function Scene:update()

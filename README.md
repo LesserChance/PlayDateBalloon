@@ -1,2 +1,2 @@
 # Learning Playdate
-Simple game to blow up a balloon with the crank
+Simple games to learn Playdate/Game Development

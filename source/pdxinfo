@@ -1,5 +1,5 @@
-name=Balloon
+name=Minigames
 author=Ryan Bateman
-description=Balloon test
-bundleID=com.ryanbateman.template
+description=Minigames
+bundleID=com.ryanbateman.minigames
 version=0.0.1

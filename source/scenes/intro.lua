@@ -16,8 +16,9 @@ function SceneIntro:load()
 end
 
 function SceneIntro:update()
-    if playdate.buttonJustReleased(playdate.kButtonA) or
-        playdate.buttonJustReleased(playdate.kButtonB) then
+    if playdate.buttonJustReleased(playdate.kButtonA) then
         SceneManager.load(SceneManager.SCENE_BALLOON)
+    elseif playdate.buttonJustReleased(playdate.kButtonB) then
+        SceneManager.load(SceneManager.SCENE_SNAKE)
     end
 end

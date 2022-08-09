@@ -8,9 +8,11 @@ local currentScene
 SceneManager = {}
 SceneManager.SCENE_INTRO = 1
 SceneManager.SCENE_BALLOON = 2
+SceneManager.SCENE_SNAKE = 3
 
 import "scenes/intro"
 import "scenes/balloon"
+import "scenes/snake"
 
 function SceneManager.load(newScene)
     if currentScene then
@@ -21,6 +23,8 @@ function SceneManager.load(newScene)
         currentScene = SceneIntro()
     elseif newScene == SceneManager.SCENE_BALLOON then
         currentScene = SceneBalloon()
+    elseif newScene == SceneManager.SCENE_SNAKE then
+        currentScene = SceneSnake()
     end
 
     if currentScene then
@@ -34,6 +38,9 @@ function SceneManager.endScene()
     end
 
     if currentScene.sceneType == SceneManager.SCENE_BALLOON then
+        -- go back to the intro
+        SceneManager.load(SceneManager.SCENE_INTRO)
+    elseif currentScene.sceneType == SceneManager.SCENE_SNAKE then
         -- go back to the intro
         SceneManager.load(SceneManager.SCENE_INTRO)
     end

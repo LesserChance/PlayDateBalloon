@@ -159,10 +159,10 @@ function SceneSnake:update()
     gfx.drawTextAligned("SNAKE IT!", 200, 220, kTextAlignment.center)
     
     -- draw a border
-    -- gfx.setColor(gfx.kColorBlack)
-    -- gfx.setLineWidth(self.strokeWidth)
-    -- gfx.setStrokeLocation(gfx.kStrokeCentered)
-    -- gfx.drawRect(self.colStart, self.rowStart, self.gridWidth, self.gridHeight)
+    gfx.setColor(gfx.kColorBlack)
+    gfx.setLineWidth(self.strokeWidth)
+    gfx.setStrokeLocation(gfx.kStrokeCentered)
+    gfx.drawRect(self.colStart, self.rowStart, self.gridWidth, self.gridHeight)
 
     playdate.timer.updateTimers()
 end

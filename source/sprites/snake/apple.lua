@@ -22,23 +22,12 @@ function Apple:init(grid, x, y)
 
     self:setZIndex(1)
 
-    self.image = gfx.image.new(grid.columnWidth, grid.rowHeight)
-    self:setImage(self.image)
-
-    gfx.pushContext(self.image)
-        gfx.drawCircleAtPoint(grid.columnWidth/2,grid.rowHeight/2,grid.columnWidth/2)
-    gfx.popContext()
+    self.image = gfx.image.new("assets/Apple")
+    self:setImage(self.image, 0, math.min(grid.columnWidth, grid.rowHeight)/20)
 
     self:add()
-end
-
-function Apple:load()
 end
 
 function Apple:unload()
     self:remove()
 end
-
-function Apple:update()
-end
-

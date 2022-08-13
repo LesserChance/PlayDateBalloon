@@ -17,8 +17,8 @@ class("SceneSnake", {
 
 function SceneSnake:init()
     -- display: 400 x 240
-    self.columns = 39
-    self.rows = 20
+    self.columns = 20
+    self.rows = 10
     self.appleSpeed = 1500
     self.score = 0
     self.endSceneTimeout = 5
@@ -57,6 +57,18 @@ end
 
 function SceneSnake:unload()
     self.snake:unload()
+    
+    for i = 1, #self.apples do
+        self.apples[i]:unload()
+    end
+
+    if self.appleTimer then
+        self.appleTimer:remove()
+    end
+end
+
+function SceneSnake:endScene()
+    SceneManager.endScene()
 end
 
 function SceneSnake:handleCollision()
@@ -64,13 +76,8 @@ function SceneSnake:handleCollision()
    self.playTime = (playdate.getCurrentTimeMilliseconds() - self.startTime) / 1000;
 
    playdate.timer.new(self.endSceneTimeout * 1000, function()
-    print("END SCNE")
        self:endScene()
    end)
-end
-
-function SceneSnake:endScene()
-    SceneManager.endScene()
 end
 
 function SceneSnake:createApple()
@@ -109,7 +116,7 @@ function SceneSnake:createApple()
 
     table.insert(self.apples, Apple(self, x, y))
 
-    playdate.timer.new(self.appleSpeed, function()
+    self.appleTimer = playdate.timer.new(self.appleSpeed, function()
         self:createApple()
     end)
 end
@@ -145,19 +152,17 @@ function SceneSnake:update()
 
     -- update all sprites
     gfx.sprite.update()
+
+    self.snake:update()
     
     -- draw text
     gfx.drawTextAligned("SNAKE IT!", 200, 220, kTextAlignment.center)
     
     -- draw a border
-    gfx.setColor(gfx.kColorBlack)
-    gfx.setLineWidth(self.strokeWidth)
-    gfx.setStrokeLocation(gfx.kStrokeCentered)
-    gfx.drawRect(self.colStart, self.rowStart, self.gridWidth, self.gridHeight)
+    -- gfx.setColor(gfx.kColorBlack)
+    -- gfx.setLineWidth(self.strokeWidth)
+    -- gfx.setStrokeLocation(gfx.kStrokeCentered)
+    -- gfx.drawRect(self.colStart, self.rowStart, self.gridWidth, self.gridHeight)
 
     playdate.timer.updateTimers()
-end
-
-function SceneSnake:endScene()
-    SceneManager.endScene()
 end
